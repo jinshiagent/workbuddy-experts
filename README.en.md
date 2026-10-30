@@ -26,7 +26,28 @@
 | | |
 |---|---|
 | ✅ **Is** | A reference archive for prompt engineering; full system prompts of 246 domain experts; a real-world sample of Nunjucks template composition; a reverse-engineering report on the WorkBuddy client |
-| ❌ **Is not** | A WorkBuddy replacement; a runnable Electron app; an official Tencent SDK; an official Tencent product in any form |
+| ❌ **Is not** | A WorkBuddy replacement; a runnable Electron app; an official Tencent SDK; an official Tencent product in any form; **a model-powered app (no real AI model is connected)** |
+
+---
+
+## 🚀 Offline Workbench Prototype (workbench.html) Usage
+
+This repo also ships a **single-file, zero-dependency, fully offline** workbench prototype `workbench.html` that bundles the 246 expert prompts with the collaborative-flow / template features into one HTML file. **No environment setup, no server required.**
+
+> ⚠️ This workbench is **not connected to any real AI model**; all collaborative-flow outputs are offline demonstration samples (high-fidelity, not real-time inference). For personal study of prompt engineering only; no official affiliation with Tencent.
+
+### First run & build (optional rebuild)
+If you modify the expert assets or need to regenerate from source, run in a terminal:
+```bash
+python make_workbench.py
+```
+> Use such code with caution. This compiles a ~2.9 MB `workbench.html` in the current directory.
+
+### Daily usage
+1. **Launch by double-click**: find `workbench.html` and double-click it; Chrome / Edge / Firefox recommended; works 100% offline under `file://` with the network fully disconnected.
+2. **Asset center & role management (MVP)**: browse and search the 246 experts; configure "memory slots" (currently a high-fidelity visual placeholder), favorite, or create / derive your own roles; Tencent-Zone experts are auto-blocked from copy/export, interactions stay local.
+3. **Collaborative-flow engine (P1→P2)**: add/remove nodes, reorder experts to simulate relay collaboration; step-run outputs offline evaluation samples; edits auto-save to `localStorage` (≤20 records) and survive refresh / close.
+4. **Local template library (P3)**: three built-in read-only templates (Dashboard / Competitor / Content); click "New from template" to physically derive an independent flow you can freely edit without altering the original.
 
 ---
 
@@ -36,6 +57,8 @@
 workbuddy-experts/
 ├── README.md                ← Chinese version
 ├── README.en.md             ← this file
+├── workbench.html           ← single-file offline workbench prototype (double-click to run; no model connected)
+├── make_workbench.py        ← build script (stdlib only, optional rebuild)
 ├── PROMPTS.md               ← full reverse-engineering report (architecture, IPC, COS, cache paths)
 ├── LICENSE                  ← MIT (covers curation work only)
 ├── NOTICE                   ← upstream + Tencent copyright notices
